@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010-2015, b3log.org
+ * Copyright (c) 2010-2016, b3log.org & hacpai.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,6 @@ import org.b3log.latke.urlfetch.URLFetchService;
 import org.b3log.latke.urlfetch.URLFetchServiceFactory;
 import org.b3log.latke.util.Requests;
 import org.b3log.latke.util.Strings;
-import org.b3log.solo.SoloServletListener;
 import org.b3log.solo.event.EventTypes;
 import org.b3log.solo.model.Article;
 import org.b3log.solo.model.Comment;
@@ -57,7 +56,7 @@ import org.json.JSONObject;
  * Comment receiver (from B3log Symphony).
  *
  * @author <a href="http://88250.b3log.org">Liang Ding</a>
- * @version 1.1.0.10, Nov 20, 2015
+ * @version 1.1.1.11, Dec 31, 2015
  * @since 0.5.5
  */
 @RequestProcessor
@@ -201,9 +200,9 @@ public class CommentReceiver {
             final String commentId = symphonyCmt.optString(Keys.OBJECT_ID);
             String commentContent = symphonyCmt.getString(Comment.COMMENT_CONTENT);
 
-            commentContent += "<p class='cmtFromSym'><i>该评论同步自 <a href='" + SoloServletListener.B3LOG_SYMPHONY_SERVE_PATH
-                    + "/article/" + symphonyCmt.optString("commentSymphonyArticleId") + "#" + commentId
-                    + "' target='_blank'>黑客派</a></i></p>";
+//            commentContent += "<p class='cmtFromSym'><i>该评论同步自 <a href='" + SoloServletListener.B3LOG_SYMPHONY_SERVE_PATH
+//                    + "/article/" + symphonyCmt.optString("commentSymphonyArticleId") + "#" + commentId
+//                    + "' target='_blank'>黑客派</a></i></p>";
             final String originalCommentId = symphonyCmt.optString(Comment.COMMENT_ORIGINAL_COMMENT_ID);
             // Step 1: Add comment
             final JSONObject comment = new JSONObject();
@@ -217,7 +216,7 @@ public class CommentReceiver {
             final Date date = new Date();
 
             comment.put(Comment.COMMENT_DATE, date);
-            ret.put(Comment.COMMENT_DATE, DateFormatUtils.format(date, "yyyy-MM-dd hh:mm:ss"));
+            ret.put(Comment.COMMENT_DATE, DateFormatUtils.format(date, "yyyy-MM-dd HH:mm:ss"));
             if (!Strings.isEmptyOrNull(originalCommentId)) {
                 originalComment = commentRepository.get(originalCommentId);
                 if (null != originalComment) {

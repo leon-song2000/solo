@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (c) 2010-2015, b3log.org
+    Copyright (c) 2010-2016, b3log.org & hacpai.com
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -17,24 +17,11 @@
 
 -->
 <!--
-    Description: Task queue configurations on GAE. See
-                 https://code.google.com/appengine/docs/java/config/queue.html
-                 for more details.
-    Version: 1.0.1.2, Feb 21, 2012
+    Description: Task queue configurations.
+    Version: 2.0.1.2, Jan 8, 2016
     Author: Liang Ding
 -->
 <queue-entries>
-    <!--
-    <queue>
-        <name>request-stat-queue</name>
-        <rate>20/m</rate>
-        <bucket-size>60</bucket-size>
-        <retry-parameters>
-            <task-retry-limit>7</task-retry-limit>
-        </retry-parameters>
-    </queue>
-    -->
-    
     <queue>
         <name>fix-queue</name>
         <rate>20/m</rate>

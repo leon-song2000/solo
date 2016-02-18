@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010-2015, b3log.org
+ * Copyright (c) 2010-2016, b3log.org & hacpai.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.b3log.latke.Latkes;
+import org.b3log.latke.RuntimeMode;
 import org.b3log.latke.logging.Level;
 import org.b3log.latke.logging.Logger;
 import org.b3log.latke.util.Strings;
@@ -43,7 +44,7 @@ import org.eclipse.jetty.webapp.WebAppContext;
  * </ul>
  *
  * @author <a href="http://88250.b3log.org">Liang Ding</a>
- * @version 1.1.0.5, Dec 5, 2015
+ * @version 1.1.0.7, Dec 23, 2015
  * @since 1.2.0
  */
 public final class Starter {
@@ -94,6 +95,10 @@ public final class Starter {
                 .hasArg().desc("browser visit static resource port, default is 8080").build();
         options.addOption(staticServerPortOpt);
 
+        final Option runtimeModeOpt = Option.builder("rm").longOpt("runtime_mode").argName("RUNTIME_MODE")
+                .hasArg().desc("runtime mode (DEVELOPMENT/PRODUCTION), default is DEVELOPMENT").build();
+        options.addOption(runtimeModeOpt);
+
         options.addOption("h", "help", false, "print help for the command");
 
         final HelpFormatter helpFormatter = new HelpFormatter();
@@ -103,7 +108,7 @@ public final class Starter {
         final boolean isWindows = System.getProperty("os.name").toLowerCase().contains("windows");
         final String cmdSyntax = isWindows ? "java -cp WEB-INF/lib/*;WEB-INF/classes org.b3log.solo.Starter"
                 : "java -cp WEB-INF/lib/*:WEB-INF/classes org.b3log.solo.Starter";
-        final String header = "\nSolo is a blogging system written by Java, feel free to create your or your team own blog.\nSolo 是一个用 Java 编写的博客系统，为你或你的团队创建个博客吧。\n\n";
+        final String header = "\nSolo is a blogging system written in Java, feel free to create your or your team own blog.\nSolo 是一个用 Java 实现的博客系统，为你或你的团队创建个博客吧。\n\n";
         final String footer = "\nReport bugs or request features please visit our project website: https://github.com/b3log/solo\n\n";
         try {
             commandLine = commandLineParser.parse(options, args);
@@ -136,6 +141,11 @@ public final class Starter {
         Latkes.setStaticServerHost(staticServerHost);
         String staticServerPort = commandLine.getOptionValue("static_server_port");
         Latkes.setStaticServerPort(staticServerPort);
+        String runtimeMode = commandLine.getOptionValue("runtime_mode");
+        if (null != runtimeMode) {
+            Latkes.setRuntimeMode(RuntimeMode.valueOf(runtimeMode));
+        }
+        Latkes.setScanPath("org.b3log.solo"); // For Latke IoC 
 
         logger.info("Standalone mode, see [https://github.com/b3log/solo/wiki/standalone_mode] for more details.");
         Latkes.initRuntimeEnv();

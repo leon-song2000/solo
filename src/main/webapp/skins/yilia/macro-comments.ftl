@@ -7,7 +7,7 @@
             <div class="fn-clear post-meta">
                 <span class="fn-left">
                     <#if "http://" == comment.commentURL>
-                    <span>${comment.commentName}</span>
+                    <a>${comment.commentName}</a>
                     <#else>
                     <a href="${comment.commentURL}" target="_blank">${comment.commentName}</a>
                     </#if>
@@ -131,7 +131,7 @@
                                 commentHTML += '<a class="fn-right" href="javascript:replyTo(\'' + result.oId + '\');">${replyLabel}</a>';
                             }
                             commentHTML += '</div><div class="comment-content">' +
-                                    Util.replaceEmString($("#comment" + state).val().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br/>"))
+                                    Util.replaceEmString($("#comment" + state).val())
                                     + '</div></div></li>';
                             return commentHTML;
                         };

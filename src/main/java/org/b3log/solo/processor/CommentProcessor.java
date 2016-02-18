@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010-2015, b3log.org
+ * Copyright (c) 2010-2016, b3log.org & hacpai.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,7 +48,7 @@ import org.json.JSONObject;
  *
  * @author <a href="http://88250.b3log.org">Liang Ding</a>
  * @author ArmstrongCN
- * @version 1.1.1.12, Apr 10, 2014
+ * @version 1.2.2.12, Dec 29, 2015
  * @since 0.3.1
  */
 @RequestProcessor
@@ -91,7 +91,7 @@ public class CommentProcessor {
      * {
      *     "oId": generatedCommentId,
      *     "sc": "COMMENT_PAGE_SUCC"
-     *     "commentDate": "", // yyyy/MM/dd hh:mm:ss
+     *     "commentDate": "", // yyyy/MM/dd HH:mm:ss
      *     "commentSharpURL": "",
      *     "commentThumbnailURL": "",
      *     "commentOriginalCommentName": "" // if exists this key, the comment is an reply
@@ -107,7 +107,8 @@ public class CommentProcessor {
      *     "commentEmail": "",
      *     "commentURL": "",
      *     "commentContent": "",
-     *     "commentOriginalCommentId": "" // optional, if exists this key, the comment is an reply
+     *     "commentOriginalCommentId": "", // optional, if exists this key, the comment is an reply
+     *     "commentContent": "" // HTML
      * }
      * </pre>
      * @throws ServletException servlet exception
@@ -185,10 +186,11 @@ public class CommentProcessor {
      * {
      *     "oId": generatedCommentId,
      *     "sc": "COMMENT_ARTICLE_SUCC",
-     *     "commentDate": "", // yyyy/MM/dd hh:mm:ss
+     *     "commentDate": "", // yyyy/MM/dd HH:mm:ss
      *     "commentSharpURL": "",
      *     "commentThumbnailURL": "",
-     *     "commentOriginalCommentName": "" // if exists this key, the comment is an reply
+     *     "commentOriginalCommentName": "", // if exists this key, the comment is an reply
+     *     "commentContent": "" // HTML
      * }
      * </pre>
      *

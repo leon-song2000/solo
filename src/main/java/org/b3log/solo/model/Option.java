@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010-2015, b3log.org
+ * Copyright (c) 2010-2016, b3log.org & hacpai.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -381,7 +381,7 @@ public final class Option {
         /**
          * Default meta keywords..
          */
-        public static final String DEFAULT_META_KEYWORDS = "Java 博客,GAE,b3log";
+        public static final String DEFAULT_META_KEYWORDS = "Solo,Java 博客,开源";
 
         /**
          * Default meta description..

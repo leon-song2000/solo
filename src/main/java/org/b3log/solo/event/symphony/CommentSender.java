@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010-2015, b3log.org
+ * Copyright (c) 2010-2016, b3log.org & hacpai.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -92,7 +92,7 @@ public final class CommentSender extends AbstractEventListener<JSONObject> {
             }
 
             if (Latkes.getServePath().contains("localhost")) {
-                LOGGER.log(Level.INFO, "Blog Solo runs on local server, so should not send this comment[id={0}] to Symphony",
+                LOGGER.log(Level.TRACE, "Solo runs on local server, so should not send this comment[id={0}] to Symphony",
                     new Object[] {originalComment.getString(Keys.OBJECT_ID)});
                 return;
             }

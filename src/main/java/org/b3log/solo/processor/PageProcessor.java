@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010-2015, b3log.org
+ * Copyright (c) 2010-2016, b3log.org & hacpai.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -120,7 +120,7 @@ public class PageProcessor {
 
             final Map<String, String> langs = langPropsService.getAll(Latkes.getLocale());
 
-            // See PermalinkFiler#dispatchToArticleOrPageProcessor()
+            // See PermalinkFilter#dispatchToArticleOrPageProcessor()
             final JSONObject page = (JSONObject) request.getAttribute(Page.PAGE);
 
             if (null == page) {

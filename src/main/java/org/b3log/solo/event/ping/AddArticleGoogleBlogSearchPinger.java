@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010-2015, b3log.org
+ * Copyright (c) 2010-2016, b3log.org & hacpai.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -91,8 +91,8 @@ public final class AddArticleGoogleBlogSearchPinger extends AbstractEventListene
             final String blogTitle = preference.getString(Option.ID_C_BLOG_TITLE);
 
             if (Latkes.getServePath().contains("localhost")) {
-                LOGGER.log(Level.INFO,
-                    "Blog Solo runs on local server, so should not ping " + "Google Blog Search Service for the article[title={0}]",
+                LOGGER.log(Level.TRACE,
+                    "Solo runs on local server, so should not ping " + "Google Blog Search Service for the article[title={0}]",
                     new Object[] {article.getString(Article.ARTICLE_TITLE)});
                 return;
             }

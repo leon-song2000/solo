@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010-2015, b3log.org
+ * Copyright (c) 2010-2016, b3log.org & hacpai.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,6 @@ import org.b3log.latke.mail.MailService;
 import org.b3log.latke.mail.MailService.Message;
 import org.b3log.latke.mail.MailServiceFactory;
 import org.b3log.latke.util.Strings;
-import org.b3log.solo.SoloServletListener;
 import org.b3log.solo.event.EventTypes;
 import org.b3log.solo.model.Article;
 import org.b3log.solo.model.Comment;
@@ -102,7 +101,7 @@ public final class ArticleCommentReplyNotifier extends AbstractEventListener<JSO
             final String blogTitle = preference.getString(Option.ID_C_BLOG_TITLE);
             final String adminEmail = preference.getString(Option.ID_C_ADMIN_EMAIL);
 
-            final String commentContent = comment.getString(Comment.COMMENT_CONTENT).replaceAll(SoloServletListener.ENTER_ESC, "<br/>");
+            final String commentContent = comment.getString(Comment.COMMENT_CONTENT);
             final String commentSharpURL = comment.getString(Comment.COMMENT_SHARP_URL);
             final Message message = new Message();
 
